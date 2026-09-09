@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Annual Compliance Training</title><link rel="stylesheet" href="style.css"></head>
+<body>
+<header><b>Compliance Training</b><span>2026</span></header>
+<main>
+<section class="card">
+<label>TRAINING REQUIRED</label>
+<h1>Annual Compliance Training</h1>
+<p>Complete your annual Information Security &amp; Compliance training to review essential security practices.</p>
+<div class="details">
+<div><small>COURSE</small>Information Security &amp; Compliance 2026</div>
+<div><small>ESTIMATED TIME</small>10–15 minutes</div>
+<div><small>FORMAT</small>Online training</div>
+</div>
+<button id="start">Begin Training</button>
+</section>
+<section id="notice" class="card hidden">
+<h2>Simulation Complete</h2>
+<p>This page is part of an authorized cybersecurity awareness exercise. No credentials, passwords, or sensitive information were collected.</p>
+</section>
+<h2>Training topics</h2>
+<div class="topics">
+<div><b>Phishing awareness</b><p>Recognize suspicious messages and links.</p></div>
+<div><b>Account security</b><p>Protect accounts with strong authentication.</p></div>
+<div><b>Data handling</b><p>Handle organizational information appropriately.</p></div>
+</div>
+</main>
+<footer>Annual Compliance Training • 2026</footer>
+<script>
+document.getElementById("start").onclick=()=>{document.getElementById("notice").classList.remove("hidden");document.getElementById("notice").scrollIntoView({behavior:"smooth"});document.getElementById("start").disabled=true;document.getElementById("start").textContent="Training Opened";}
+</script></body></html>
