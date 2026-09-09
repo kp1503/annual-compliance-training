@@ -1,32 +1,66 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Annual Compliance Training</title><link rel="stylesheet" href="style.css"></head>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Annual Compliance Training</title>
+<link rel="stylesheet" href="style.css">
+</head>
 <body>
-<header><b>Compliance Training</b><span>2026</span></header>
+<header class="header">
+  <div class="institution">UNIVERSITY SECURITY &amp; COMPLIANCE</div>
+  <div class="year">2026</div>
+</header>
+
 <main>
-<section class="card">
-<label>TRAINING REQUIRED</label>
-<h1>Annual Compliance Training</h1>
-<p>Complete your annual Information Security &amp; Compliance training to review essential security practices.</p>
-<div class="details">
-<div><small>COURSE</small>Information Security &amp; Compliance 2026</div>
-<div><small>ESTIMATED TIME</small>10–15 minutes</div>
-<div><small>FORMAT</small>Online training</div>
-</div>
-<button id="start">Begin Training</button>
-</section>
-<section id="notice" class="card hidden">
-<h2>Simulation Complete</h2>
-<p>This page is part of an authorized cybersecurity awareness exercise. No credentials, passwords, or sensitive information were collected.</p>
-</section>
-<h2>Training topics</h2>
-<div class="topics">
-<div><b>Phishing awareness</b><p>Recognize suspicious messages and links.</p></div>
-<div><b>Account security</b><p>Protect accounts with strong authentication.</p></div>
-<div><b>Data handling</b><p>Handle organizational information appropriately.</p></div>
-</div>
+  <section class="hero">
+    <div>
+      <div class="eyebrow">ANNUAL REQUIREMENT</div>
+      <h1>Annual Compliance Training</h1>
+      <p>Complete your annual Information Security &amp; Compliance training to review essential security practices.</p>
+    </div>
+  </section>
+
+  <section class="content">
+    <article class="main-card">
+      <div class="required">TRAINING REQUIRED</div>
+      <h2>Information Security &amp; Compliance 2026</h2>
+      <p class="muted">This training covers practical security practices for protecting accounts, information, and organizational resources.</p>
+
+      <div class="facts">
+        <div><small>ESTIMATED TIME</small><b>10–15 minutes</b></div>
+        <div><small>FORMAT</small><b>Online training</b></div>
+        <div><small>STATUS</small><b>Not started</b></div>
+      </div>
+
+      <button id="start">BEGIN TRAINING</button>
+
+      <div id="notice" class="notice hidden">
+        <b>Simulation Complete</b>
+        <p>This page is part of an authorized cybersecurity awareness exercise. No credentials, passwords, or sensitive information were collected.</p>
+      </div>
+    </article>
+
+    <aside>
+      <h3>Training Topics</h3>
+      <div class="topic"><b>Phishing Awareness</b><span>Recognize suspicious messages and links.</span></div>
+      <div class="topic"><b>Account Security</b><span>Protect accounts with strong authentication.</span></div>
+      <div class="topic"><b>Data Handling</b><span>Handle organizational information appropriately.</span></div>
+    </aside>
+  </section>
 </main>
-<footer>Annual Compliance Training • 2026</footer>
+
+<footer>
+  <b>UNIVERSITY SECURITY &amp; COMPLIANCE</b>
+</footer>
+
 <script>
-document.getElementById("start").onclick=()=>{document.getElementById("notice").classList.remove("hidden");document.getElementById("notice").scrollIntoView({behavior:"smooth"});document.getElementById("start").disabled=true;document.getElementById("start").textContent="Training Opened";}
-</script></body></html>
+document.getElementById("start").onclick = function () {
+  document.getElementById("notice").classList.remove("hidden");
+  document.getElementById("notice").scrollIntoView({behavior:"smooth"});
+  this.disabled = true;
+  this.textContent = "TRAINING OPENED";
+};
+</script>
+</body>
+</html>
