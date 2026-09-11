@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Georgia Tech Training Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar">
+    <div class="brand-block">
+      <div class="brand-mark">GT</div>
+      <div class="brand-text">Georgia Tech<br>Training</div>
+    </div>
+
+    <nav>
+      <a class="active" href="#">Dashboard</a>
+      <a href="#">My Courses</a>
+      <a href="#">Course Catalog</a>
+      <a href="#">Learning Paths</a>
+      <a href="#">Training History</a>
+      <a href="#">Announcements</a>
+      <a href="#">Help &amp; Support</a>
+    </nav>
+  </aside>
+
+  <main class="main">
+    <div class="topbar">
+      <input class="search" type="text" placeholder="Search for courses, training, or learning paths..." disabled>
+      <div class="top-actions">● &nbsp; Sign Out</div>
+    </div>
+
+    <section class="welcome">
+      <h1>Welcome to Georgia Tech Learning</h1>
+      <p>Your destination for training, compliance, and professional development.</p>
+    </section>
+
+    <section class="stats">
+      <div class="stat-card"><div class="stat-number">8</div><div class="stat-label">Completed Courses</div></div>
+      <div class="stat-card"><div class="stat-number">2</div><div class="stat-label">Assignments Completed</div></div>
+      <div class="stat-card"><div class="stat-number">0</div><div class="stat-label">Announcements</div></div>
+      <div class="stat-card alert"><div class="stat-number">2</div><div class="stat-label">Overdue Courses</div></div>
+    </section>
+
+    <section class="dashboard-grid">
+      <div class="panel">
+        <div class="panel-title">ACTIVE COURSES</div>
+
+        <div class="course-card">
+          <div class="thumb navy"></div>
+          <div>
+            <h3>Part 1: 2026 Fall Biannual Compliance Training</h3>
+            <p>Aug 31, 2026 - Sep 21, 2026</p>
+            <div class="progress"><span></span></div>
+          </div>
+        </div>
+
+        <div class="course-card">
+          <div class="thumb gold"></div>
+          <div>
+            <h3>Part 2: 2026 Fall Biannual Compliance Training - Security Awareness</h3>
+            <p>Aug 31, 2026 - Sep 21, 2026</p>
+          </div>
+        </div>
+
+        <div class="course-card">
+          <div class="thumb gold"></div>
+          <div>
+            <h3>Part 3: 2026 Fall Biannual Compliance Training - Social Engineering Awareness</h3>
+            <p>Aug 31, 2026 - Sep 21, 2026</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-title">COMPLETED COURSES</div>
+        <div class="completed-item"><b>2025 Fall Biannual Compliance Training - Common Threats</b><span>Completed Sep 09, 2025</span></div>
+        <div class="completed-item"><b>2025 Fall Biannual Compliance Training</b><span>Completed Sep 08, 2025</span></div>
+        <div class="completed-item"><b>2026 Spring Training - Sensitive Information</b><span>Completed Feb 17, 2026</span></div>
+        <div class="completed-item"><b>2026 Spring Training - Scams and Disinformation</b><span>Completed Feb 17, 2026</span></div>
+      </div>
+
+      <div class="panel short-panel">
+        <div class="panel-title">PENDING COURSES</div>
+        <div class="pending-item">2026 Annual Information Security Training</div>
+        <div class="pending-item">Data Privacy and You</div>
+      </div>
+
+      <div class="panel short-panel">
+        <div class="panel-title">LEARNING PATHS</div>
+        <div class="pending-item">Information Security Foundations</div>
+        <div class="pending-item">Research Security</div>
+        <div class="pending-item">Data Privacy</div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<div id="overlay" class="overlay">
+  <div class="verify-modal" role="dialog" aria-modal="true" aria-labelledby="verifyTitle">
+    <div class="modal-accent"></div>
+    <div class="modal-body">
+      <div class="modal-heading">
+        <div class="shield">🔒</div>
+        <div>
+          <h2 id="verifyTitle">Identity Verification Required</h2>
+          <p>To continue to your assigned training, please verify your identity.</p>
+        </div>
+      </div>
+
+      <label for="lastName">Last Name</label>
+      <input id="lastName" type="text" autocomplete="off" placeholder="Enter your last name">
+
+      <label for="gtid">Georgia Tech ID (GTID)</label>
+      <input id="gtid" type="text" inputmode="numeric" maxlength="9" autocomplete="off" placeholder="Enter your 9-digit Georgia Tech ID">
+
+      <div id="validation" class="validation"></div>
+
+      <button id="verifyBtn" disabled>Verify and Continue</button>
+    </div>
+  </div>
+</div>
+
+<div id="resultOverlay" class="overlay hidden">
+  <div class="verify-modal">
+    <div class="modal-accent success"></div>
+    <div class="modal-body">
+      <div class="modal-heading">
+        <div class="shield">✓</div>
+        <div>
+          <h2>Simulation Complete</h2>
+          <p>Your interaction was part of a Go Phish assignment.</p>
+        </div>
+      </div>
+
+      <div class="info-box success-box">
+        The information you entered was immediately discarded in your browser. It was not sent to a server, stored, logged, or retained.
+      </div>
+
+      <button id="finishBtn">Return to Dashboard</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const lastName = document.getElementById("lastName");
+const gtid = document.getElementById("gtid");
+const verifyBtn = document.getElementById("verifyBtn");
+const validation = document.getElementById("validation");
+
+function validate() {
+  gtid.value = gtid.value.replace(/\D/g, "").slice(0, 9);
+  const nameOK = lastName.value.trim().length > 0;
+  const gtidOK = /^\d{9}$/.test(gtid.value);
+
+  verifyBtn.disabled = !(nameOK && gtidOK);
+
+  if (!lastName.value && !gtid.value) {
+    validation.textContent = "";
+  } else if (!nameOK) {
+    validation.textContent = "Enter your last name.";
+  } else if (!gtidOK) {
+    validation.textContent = "Enter a 9-digit Georgia Tech ID.";
+  } else {
+    validation.textContent = "Ready to continue.";
+  }
+}
+
+lastName.addEventListener("input", validate);
+gtid.addEventListener("input", validate);
+
+verifyBtn.addEventListener("click", () => {
+  // Deliberately discard all values locally. No form submission exists.
+  lastName.value = "";
+  gtid.value = "";
+  validation.textContent = "";
+  verifyBtn.disabled = true;
+
+  document.getElementById("overlay").classList.add("hidden");
+  document.getElementById("resultOverlay").classList.remove("hidden");
+});
+
+document.getElementById("finishBtn").addEventListener("click", () => {
+  document.getElementById("resultOverlay").classList.add("hidden");
+});
+</script>
+</body>
+</html>

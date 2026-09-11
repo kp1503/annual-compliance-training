@@ -1,0 +1,1 @@
+Updated training simulation. The completion message identifies the interaction as part of a Go Phish assignment. Entered values are immediately discarded and are not transmitted or stored.
